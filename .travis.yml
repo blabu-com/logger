@@ -1,0 +1,14 @@
+language: node_js
+before_script:
+- npm install -g typescript
+- tsc
+- npm pack
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: t.voslar@gmail.com
+  api_key:
+    secure: NtBnhMC+QV8Enn3Gae7jgRcyVRe6phH5H+eZb+Fk43tNUKCziOx5BLF4788/QSl5ZEZ8uA8HNiHee0vHdokqieTZ57wV5O6+k8eDk2BFPD903Kfw+OC8gSOY4BeVujiiWJNR2KMuIJzPULXj17PU3cd/I+oTpcTc+B+4X+v7YXxDrHuCt9yz5bw3rFCrdh6OMV4gH/hYcdvEOln8ST8kAJZ49BgpTK5FHrmKKRJJPEJ1uJ0xq6O78tW9USuFqoLcvOBvLOUHklgF+iUKGOfIDQ4Szuhg86u6e/2v00wg8mGK/4iaK4lM0fqk1hifkBCkdNm0CrTo3nUIL5BFozTJJFqcaS8DpIi18d23E/O+ffspB+UA8Im/A9FbbNlAXfd1iXlhTaoLO6zB1ps/MArlzBl2a+/JMlufMTRDXM0Z31FHCksyizXQy025Izd4VCCcDzulYFEq/B7RaBSJ+bEXA0MDBR3Cr2OklhUq/HX2CuzI0WKph4klJNhsmyXvnAZAFYLDJHVfuAvCvTNdPLOM9D/ro9q8R44e9FW4Huyq+WWv6YmhJjwA+Z3KvSbhBbQp/HJqkQbFE9h/BQCcEjrG6OD2sOMDyvjahur8q1ji9rLJRl9QGlKXFrv+KiOg6TK4//MLrnhavsliymk/yKPffnk/wuxYMiTQoiFhhNhS4mg=
+  on:
+    tags: true
+    repo: blabu-com/logger

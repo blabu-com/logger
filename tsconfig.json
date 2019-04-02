@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "module": "commonjs",
+    "lib": [
+      "es2017"
+    ],
+    "target": "es2017",
+    "esModuleInterop": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "outDir": "build",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
+  },
+  "include": [
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "docs",
+    "coverage",
+    ".nyc_output",
+    "migrations"
+  ]
+}
