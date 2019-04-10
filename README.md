@@ -1,5 +1,7 @@
 # logger
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/blabu-com/logger.svg)](https://greenkeeper.io/)
+
 To create new release change version in package.json and create git tag
 
 ```
