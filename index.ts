@@ -1,7 +1,7 @@
 import { createLogger, stdSerializers } from 'bunyan'
 import * as stream from 'stream'
 import * as Sentry from '@sentry/node'
-
+import { serializeContext } from './serializeContext'
 Sentry.init({ dsn: process.env.SENTRY_DSN })
 
 const getLogLevelBasedOnNodeEnv = () => {
@@ -24,7 +24,10 @@ export const getLogger = (serviceName: string) => {
     name: serviceName,
     level: getLogLevelBasedOnNodeEnv(),
     src: process.env.NODE_ENV !== 'production',
-    serializers: { err: stdSerializers.err }
+    serializers: {
+      err: stdSerializers.err,
+      context: serializeContext
+    }
   })
 
   logger.addStream({
