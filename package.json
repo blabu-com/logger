@@ -1,11 +1,11 @@
 {
   "name": "@blabu.com/logger",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "",
   "main": "build/index.js",
   "scripts": {
     "test": "mocha ./test/*.ts",
-    "lint": "tslint  -c tslint.json --project tsconfig.json '*.ts'"
+    "lint": "tslint -c tslint.json --project tsconfig.json '*.ts'"
   },
   "repository": {
     "type": "git",

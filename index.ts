@@ -1,7 +1,10 @@
-import { createLogger, stdSerializers } from 'bunyan'
-import * as stream from 'stream'
 import * as Sentry from '@sentry/node'
+import * as stream from 'stream'
+
+import { createLogger, stdSerializers } from 'bunyan'
+
 import { serializeContext } from './serializeContext'
+
 Sentry.init({ dsn: process.env.SENTRY_DSN })
 
 const getLogLevelBasedOnNodeEnv = () => {
@@ -19,21 +22,39 @@ class SentryStream extends stream.Writable {
   }
 }
 
-export const getLogger = (serviceName: string) => {
+export const getLogger = (serviceName: string, getRrid?) => {
   const logger = createLogger({
     name: serviceName,
     level: getLogLevelBasedOnNodeEnv(),
     src: process.env.NODE_ENV !== 'production',
+    streams: [
+      {
+        name: 'std',
+        stream: new stream.Writable({
+          write: function(chunk, encoding, next) {
+            const t = JSON.parse(chunk.toString())
+            try {
+              t.reqId = getRrid ? getRrid() : undefined
+            } catch (err) {
+              t.reqId = undefined
+            }
+
+            console.log(JSON.stringify(t))
+
+            next()
+          }
+        })
+      },
+      {
+        name: 'sentry',
+        stream: new SentryStream(),
+        level: 'fatal'
+      }
+    ],
     serializers: {
       err: stdSerializers.err,
       context: serializeContext
     }
-  })
-
-  logger.addStream({
-    name: 'sentry',
-    stream: new SentryStream(),
-    level: 'fatal'
   })
 
   return logger
