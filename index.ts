@@ -17,7 +17,7 @@ const getLogLevelBasedOnNodeEnv = () => {
 class SentryStream extends stream.Writable {
   _write(chunk, enc, next) {
     const message = JSON.parse(chunk.toString())
-    Sentry.captureMessage(`${message.name} - ${message.msg} - line: ${message.src.line}, file: ${message.src.file}, func: ${message.src.func}`, Sentry.Severity.Fatal)
+    Sentry.captureMessage(`${message.name} - ${message.msg} - line: ${message.src && message.src.line}, file: ${message.src && message.src.file}, func: ${message.src && message.src.func}`, Sentry.Severity.Fatal)
     next()
   }
 }
@@ -39,7 +39,7 @@ export const getLogger = (serviceName: string, getRrid?) => {
               t.reqId = undefined
             }
 
-            console.log(JSON.stringify(t))
+            console.log(JSON.stringify(serializeContext(t)))
 
             next()
           }
