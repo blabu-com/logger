@@ -5,7 +5,10 @@ import { createLogger, stdSerializers } from 'bunyan'
 
 import { serializeContext } from './serializeContext'
 
-Sentry.init({ dsn: process.env.SENTRY_DSN })
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  release: process.env.COMMIT_SHA
+})
 
 const getLogLevelBasedOnNodeEnv = () => {
   if (process.env.NODE_ENV === 'production') return 'info'
