@@ -1,7 +1,7 @@
 export function serializeContext(context) {
   try {
     const newContext = {}
-    const allowedFields = [ 'user', 'headers', 'requestId' ]
+    const allowedFields = [ 'user', 'headers', 'requestId', 'ip' ]
     for (const prop in context) {
       if (context.hasOwnProperty(prop) && allowedFields.includes(prop)) {
         newContext[prop] = context[prop]

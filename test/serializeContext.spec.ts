@@ -10,9 +10,11 @@ describe('serialize context', () => {
       headers: {
         header: 'value'
       },
-      extendedRandomData: 'qwertzuiop'
+      extendedRandomData: 'qwertzuiop',
+      ip: '127.0.0.1'
     })
 
     assert.strictEqual(c.extendedRandomData, undefined)
+    assert.strictEqual(c.ip, '127.0.0.1')
   })
 })
