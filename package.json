@@ -1,9 +1,11 @@
 {
   "name": "@blabu.com/logger",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "",
   "main": "build/index.js",
   "scripts": {
+    "build": "rm -rf ./build && tsc",
+    "prepublishOnly": "npm run build",
     "test": "mocha ./test/*.ts",
     "lint": "tslint -c tslint.json --project tsconfig.json '*.ts'"
   },
