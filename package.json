@@ -21,7 +21,7 @@
   "homepage": "https://github.com/blabu-com/logger#readme",
   "dependencies": {
     "@sentry/node": "^5.0.0",
-    "@types/mocha": "^5.2.6",
+    "@types/mocha": "^7.0.0",
     "bunyan": "^1.8.12"
   },
   "devDependencies": {
