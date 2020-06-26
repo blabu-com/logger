@@ -33,7 +33,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'master' }}
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
