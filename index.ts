@@ -53,7 +53,8 @@ export const getLogger = (serviceName?: string, getRrid?) => {
     ],
     serializers: {
       err: stdSerializers.err,
-      context: serializeContext
+      context: serializeContext,
+      ctx: serializeContext
     }
   })
 
